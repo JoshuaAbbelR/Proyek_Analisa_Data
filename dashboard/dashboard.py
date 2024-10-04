@@ -4,7 +4,7 @@ import seaborn as sns
 import streamlit as st
 
 sns.set(style='dark')
-all_df = pd.read_csv("all_data.csv")
+all_df = pd.read_csv("/mount/src/proyek_analisa_data/dashboard/all_data.csv")
 
 def create_sum_product_df(df):
     sum_product_df = df.groupby("product_category_name_english")["order_item_id"].count().reset_index().sort_values(by="order_item_id", ascending=False)
