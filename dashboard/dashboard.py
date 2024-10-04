@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-sns.set(style='dark')
+sns.set(style="dark")
 all_df = pd.read_csv("/mount/src/proyek_analisa_data/dashboard/all_data.csv")
 
 def create_sum_product_df(df):
@@ -16,11 +16,11 @@ def create_bycity_df(df):
     return bycity_df
 
 with st.sidebar:
-    st.image("https://yourcompanylogo.com")  # Replace with your logo
+    st.image("/mount/src/proyek_analisa_data/dashboard/bzl.jpg")
     min_date = all_df["order_purchase_timestamp"].min()
     max_date = all_df["order_purchase_timestamp"].max()
     start_date, end_date = st.date_input(
-        label='Select Date Range',
+        label="Pilih Rentang Waktu",
         min_value=pd.to_datetime(min_date),
         max_value=pd.to_datetime(max_date),
         value=[pd.to_datetime(min_date), pd.to_datetime(max_date)]
@@ -32,9 +32,13 @@ main_df = all_df[(all_df["order_purchase_timestamp"] >= str(start_date)) &
 sum_product_df = create_sum_product_df(main_df)
 bycity_df = create_bycity_df(main_df)
 
-st.header('E-Commerce Dashboard')
-
-st.subheader('Produk Terbaik dan Terburuk Berdasarkan Penjualan')
+st.title("🛒 BZL Shop Dashboard 🛍️")
+st.subheader("1. Produk Terbaik dan Terburuk Berdasarkan Penjualan")
+st.markdown(
+    """
+    Berikut adalah penjualan lima kategori produk dengan pembelian terbaik dan terburuk.
+    """
+)
 
 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(26, 8))
 colors = ["#72BCD4", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
@@ -62,7 +66,12 @@ ax[1].invert_xaxis()
 
 st.pyplot(fig)
 
-st.subheader('Kota dengan Konsentrasi Pelanggan Terbesar')
+st.subheader("2. Kota dengan Konsentrasi Pelanggan Terbesar")
+st.markdown(
+    """
+    Berikut adalah 10 nama kota dengan konsentrasi pelanggan terbesar.
+    """
+)
 
 fig, ax = plt.subplots(figsize=(10, 5))
 colors_ = ["#72BCD4", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3", "#D3D3D3"]
@@ -75,8 +84,8 @@ sns.barplot(
     hue="customer_city",
     legend=False
 )
-ax.set_title("Top 10 Kota dengan Pelanggan Terbanyak", fontsize=15)
+ax.set_title("10 Kota dengan Konsentrasi Pelanggan Terbanyak", fontsize=15)
 
 st.pyplot(fig)
 
-st.caption('E-Commerce Joshua - 2024')
+st.caption("JoshuaAbbelR - 2024")
