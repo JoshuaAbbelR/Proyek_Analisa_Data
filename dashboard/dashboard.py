@@ -36,7 +36,7 @@ st.title("🛒 BZL Shop Dashboard 🛍️")
 st.subheader("1. Produk Terbaik dan Terburuk Berdasarkan Penjualan")
 st.markdown(
     """
-    Berikut adalah penjualan lima kategori produk dengan pembelian terbaik dan terburuk.
+    Berikut adalah penjualan beberapa kategori produk dengan pembelian terbaik dan terburuk.
     """
 )
 
@@ -69,7 +69,7 @@ st.pyplot(fig)
 st.subheader("2. Kota dengan Konsentrasi Pelanggan Terbesar")
 st.markdown(
     """
-    Berikut adalah 10 nama kota dengan konsentrasi pelanggan terbesar.
+    Berikut adalah nama-nama kota dengan konsentrasi pelanggan terbesar.
     """
 )
 
@@ -84,7 +84,7 @@ sns.barplot(
     hue="customer_city",
     legend=False
 )
-ax.set_title("10 Kota dengan Konsentrasi Pelanggan Terbanyak", fontsize=15)
+ax.set_title("Kota dengan Konsentrasi Pelanggan Trbesar", fontsize=15)
 
 st.pyplot(fig)
 
