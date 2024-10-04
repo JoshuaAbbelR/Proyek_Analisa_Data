@@ -1,0 +1,2 @@
+This is the link to the dashboard by using streamlit cloud
+https://joshsukadicocingkiwkiw.streamlit.app/
